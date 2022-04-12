@@ -7,9 +7,9 @@ use App\Models\Task;
 class ValidateTaskServices
 {
 
-    public function checkTasksStatus($request, $task)
+    public function checkTasksStatus($newStatus, $task)
     {
-        if ($request->status === Task::STATUS_DONE
+        if ($newStatus === Task::STATUS_DONE
             && $task->status === Task::STATUS_TODO
             && !empty($task->subtask)) {
             $this->checkStatus($task->subtask);

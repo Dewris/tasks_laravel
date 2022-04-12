@@ -88,7 +88,7 @@ class TaskController extends Controller
         $user_id = 2;//Auth::id();
         $user = User::find($user_id);
         $task = $user->tasks()->findOrFail($id);
-        $validateTaskServices->checkTasksStatus($request, $task);
+        $validateTaskServices->checkTasksStatus($request->status, $task);
 
         $task->update($request->validated());
         return new TaskResource($task);
